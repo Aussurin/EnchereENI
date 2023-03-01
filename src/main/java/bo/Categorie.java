@@ -8,7 +8,9 @@ public class Categorie {
 	public long libelle;
 	List<ArticleVendu> articleVendu;
 	
-	
+	public Categorie() {
+		
+	}
 	
 	
 	

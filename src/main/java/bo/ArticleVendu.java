@@ -17,10 +17,32 @@ public class ArticleVendu {
 	private Utilisateur utilisateur;
 	private Categorie categorie;
 	
-	public ArticleVendu() {
+	
+public ArticleVendu() {
 		
 		
 	}
+	
+	public ArticleVendu(int noArticle, String nomArticle, String description, Date dateDebutEncheres,
+			Date dateFinEncheres, int miseAPrix, int prixVente, String etatVente, List<Enchere> enchere,
+			Utilisateur utilisateur, Categorie categorie) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.enchere = enchere;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
+	}
+
+
+
+	
 	
 	
 
