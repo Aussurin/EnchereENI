@@ -7,7 +7,8 @@
 <title>Erreur lors de la création du compte, données invalide.</title>
 </head>
 <body>
-<h1>Une erreur est survenue, le(s) champ(s) <%request.getAttribute("Erreurs"); %> </h1>
+<%@include file="/WEB-INF/EnTete.jsp" %>
+<h2>Une erreur est survenue, le(s) champ(s) <%request.getAttribute("Erreurs"); %> </h2>
 <a href="PageAcceuil.jsp">Retour à la page d'acceuil</a>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Enchere-ENI</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<%@include file="/WEB-INF/EnTete.jsp" %>
