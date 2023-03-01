@@ -12,6 +12,10 @@ public class Enchere {
 	 
 	 
 	 
+	public Enchere() {
+		super();
+	}
+
 	public Enchere(Date dateEnchere, int montant_enchere, ArticleVendu articleVendu, Utilisateur utilisateur) {
 		super();
 		this.dateEnchere = dateEnchere;
