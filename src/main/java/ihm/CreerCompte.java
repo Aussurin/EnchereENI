@@ -18,20 +18,26 @@ public class CreerCompte extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  //création d'une instance d'utilisateur avec les données correspondantes à celles du formulaire.
 		Utilisateur user = new Utilisateur();
-		user.setPseudo(request.Pseudo);
-		user.setNom(request.Nom);
-		user.setPrenom(request.Prenom);
-		user.setEmail(request.Email);
-		user.setRue(request.Rue);
-		user.setCodePostal(request.CodePostal);
-		user.setVille(request.Ville);
-		user.setMotDePasse(request.MotDePasse);
+		
+		String mdp = (String)request.getAttribute("MotDePasse");
+		String confirmMdp = (String)request.getAttribute("ConfirmMdp");
+		if(mdp.length() == 0 || confirmMdp.length() == 0 || mdp != confirmMdp) {
+			request.setAttribute("Erreurs", "Mots de passe vides ou différents");
+		}
+		user.setPseudo((String) request.getAttribute("Pseudo"));
+		user.setNom((String) request.getAttribute("Nom"));
+		user.setPrenom((String) request.getAttribute("Prenom"));
+		user.setEmail((String) request.getAttribute("Email"));
+		user.setRue((String) request.getAttribute("Rue"));
+		user.setCodePostal((int) request.getAttribute("CodePostal"));
+		user.setVille((String) request.getAttribute("Ville"));
+		user.setMotDePasse(mdp);
 		user.setCredit(0);
-		if(request.Telephone != null) {
-			user.setTelephone(request.Telephone);
+		if(request.getAttribute("Telephone").equals(null)) {
+			user.setTelephone((int) request.getAttribute("Telephone"));
 		}
 		try {
-			CompteManager.checkCompte(user); // Vérification que tout est conforme aux condition de création de compte.
+			UtilisateurManager.checkUtilisateur(user); // Vérification que tout est conforme aux condition de création de compte.
 		}catch (Exception exception){
 			String messageErreur = exception.getMessage();
 			request.setAttribute("Erreurs", messageErreur);

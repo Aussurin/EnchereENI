@@ -23,7 +23,7 @@ public class RechercherEnchere extends HttpServlet {
 		ArrayList<Enchere> liste = new ArrayList<Enchere>();
 		String categorie = request.getParameter("Categorie");
 		
-		liste = getListeCategorie(categorie);
+		liste = CategorieManager.getListeCategorie(categorie);
 		request.setAttribute("EnchereCategorie", liste);
 		request.getRequestDispatcher("/PageAcceuil.jsp").forward(request, response);
 	}
