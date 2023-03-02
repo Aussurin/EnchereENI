@@ -4,13 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="CreerCompte.css">
 <meta charset="ISO-8859-1">
-<title>Création de compte</title>
+<title>Crï¿½ation de compte</title>
 </head>
 <body>
 	<%@include file="/WEB-INF/EnTete.jsp" %>
 	<main>
-		<h2>Création de Compte</h2>
+		<h2>Crï¿½ation de Compte</h2>
 		<form method="post" action="/EnchereENI/src/main/java/ihm/CreerCompte.java">
 			<table>
 				<tr>
@@ -18,11 +19,11 @@
 					<td><label for="Nom">Nom</label><input type="text" name="Nom" id="Nom" placeholder="Nom" required="required"></td>
 				</tr>
 				<tr>
-					<td><label for="Prenom"></label>Prénom<input type="text" name="Prenom" id="Prenom" placeholder="Prenom" required="required"></td>
+					<td><label for="Prenom"></label>Prï¿½nom<input type="text" name="Prenom" id="Prenom" placeholder="Prenom" required="required"></td>
 					<td><label for="Email"></label>Email<input type="email" id="Email" placeholder="Email" required="required"></td>
 				</tr>
 				<tr>
-					<td><label for="Telephone"></label>Téléphone<input type="tel" name="Telephone" id="Telephone" placeholder="Telephone"></td>
+					<td><label for="Telephone"></label>Tï¿½lï¿½phone<input type="tel" name="Telephone" id="Telephone" placeholder="Telephone"></td>
 					<td><label for="Rue"></label>Rue<input type="text" name="Rue" id="Rue" placeholder="Rue" required="required"></td>
 				</tr>
 				<tr>
@@ -34,7 +35,7 @@
 					<td><label for="ConfirmMdp"></label>Mod de passe<input type="Confirmpassword" name="ConfirmMdp" id="ConfirmMdp" placeholder="Confirmez le mot de passe" required="required"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Créer un compte"></td>
+					<td><input type="submit" value="Crï¿½er un compte"></td>
 					<td><a href="PageAcceuil.jsp">Retour</a></td>
 				</tr>
 			</table>			
