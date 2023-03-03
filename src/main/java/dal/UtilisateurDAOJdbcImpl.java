@@ -7,19 +7,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import bo.Utilisateur;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
-import bo.Utilisateur;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private Connection con;
-	private static String URL="jdbc:sqlserver://localhost1433;databaseName=ENCHERE_ENI";
+	private static String URL="jdbc:sqlserver://localhost:1433;databaseName=ENCHERE_ENI";
 	private static String USER="sa";
 	private static String PSWD="Pa$$w0rd";
 	
 	private static final String SELECT_ALL = "SELECT * FROM UTILISATEURS";
 	private static final String SELECT_BY_NO = "SELECT * FROM UTILISATEURS WHERE no_utilisateur=? ";
+	private static final String SELECT_BY_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=? ";
+	private static final String DELETE = "DELETE FROM UTILISATEUR WHERE no_utilisateur =? ";
 	
 	public UtilisateurDAOJdbcImpl() {
 			try {
@@ -53,11 +55,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				String ville = rs.getString("ville").trim();
 				String mDP = rs.getString("mot_de_passe").trim();
 				int credit = rs.getInt("credit");
-				float administrateur = rs.getFloat("administrateur");
-				
-			}
-			
-			
+				float administrateur = rs.getFloat("administrateur");				
+			}					
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}try {
@@ -89,25 +88,23 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				String ville = rs.getString("ville").trim();
 				String mDP = rs.getString("mot_de_passe").trim();
 				int credit = rs.getInt("credit");
-				float administrateur = rs.getFloat("administrateur");
-				
-			}
-			
-			
+				float administrateur = rs.getFloat("administrateur");			
+			}		
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}try {
+			e.printStackTrace();}
+		
+		try {
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}return resultat;
 		}
-		return resultat;
-	}
-
+		
 	@Override
 	public void update(Utilisateur data) throws DALException {
 		try {
 			con = DriverManager.getConnection(URL, USER, PSWD);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}try {
@@ -117,24 +114,15 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 	}
 
-	@Override
-	public void insert(Utilisateur data) throws DALException {
-		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
 
 	@Override
 	public void delete(int id) throws DALException {
 		try {
 			con = DriverManager.getConnection(URL, USER, PSWD);
+			PreparedStatement ps = con.prepareStatement(DELETE);
+			ps.setInt(1, id);
+			ps.executeUpdate();		
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}try {
@@ -144,33 +132,5 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 		
 	}
-
-	@Override
-	public List<Utilisateur> selectByPseudo(String pseudo) throws DALException {
-		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	@Override
-	public List<Utilisateur> selectByMotCle(String motCle) throws DALException {
-		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 }
+	

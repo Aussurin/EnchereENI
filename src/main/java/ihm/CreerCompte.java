@@ -16,7 +16,7 @@ public class CreerCompte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Utilisateur user = new Utilisateur();
+		/*Utilisateur user = new Utilisateur();
 		user.setPseudo(request.Pseudo);
 		user.setNom(request.Nom);
 		user.setPrenom(request.Prenom);
@@ -28,8 +28,8 @@ public class CreerCompte extends HttpServlet {
 		user.setCredit(0);
 		if(request.Telephone != null) {
 			user.setTelephone(request.Telephone);
-		}
-}
+		}*/
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

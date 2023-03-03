@@ -1,22 +1,56 @@
 package dal;
 
 public class DAOFactory {
-	
-	public static UtilisateurDAO getUtilisateurDAO()  {
-		UtilisateurDAO utilisateurDAO=null;
-		try {
-			utilisateurDAO=(UtilisateurDAO).Class.forName("dal.UtilisateurDAOJdbcImpl.java");
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return utilisateurDAO; 
-	}
 
-} 
+	public static UtilisateurDAO getUtilisateurDAO() {
+		UtilisateurDAO utilisateurDAO = null;
+		try {
+			utilisateurDAO = new UtilisateurDAOJdbcImpl();
+		} catch (Exception e) {
+			e.printStackTrace();		
+		}
+		return utilisateurDAO;
+}
+
+
+	public static RetraitDAO getRetraitDAO() {
+		RetraitDAO retraitDAO = null;
+		try {
+		retraitDAO = new RetraitDAOJdbcImpl();
+		} catch (Exception e) {
+		e.printStackTrace();	
+	}
+	return retraitDAO;
+}
+	
+	public static CategorieDAO getCategorieDAO() {
+		CategorieDAO categorieDAO = null;
+		try {
+		categorieDAO = new CategorieDAOJdbcImpl();
+		} catch (Exception e) {
+		e.printStackTrace();	
+	}
+	return categorieDAO;
+}
+	
+	public static ArticleVenduDAO getArticleVenduDAO() {
+		ArticleVenduDAO articleVenduDAO = null;
+		try {
+		articleVenduDAO = new ArticleVenduDAOJdbcImpl();
+		} catch (Exception e) {
+		e.printStackTrace();	
+	}
+	return articleVenduDAO;
+}
+	
+	public static EnchereDAO getEnchereDAO() {
+		EnchereDAO enchereDAO = null;
+		try {
+		enchereDAO = new EnchereDAOJdbcImpl();
+		} catch (Exception e) {
+		e.printStackTrace();	
+	}
+	return enchereDAO;
+}
+	
+}
