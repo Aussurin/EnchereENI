@@ -44,11 +44,37 @@ public class UtilisateurManager {
 			err.ajouterErreur("Mot de passe trop long ou vide");
 		}
 		if(err.getMessage() == null) {
-			insertUtilisateur(user);
 			return user;
 		}
 		throw err;
 	}
+
+	public Utilisateur recupUtilisateur(String pseudo) throws Exception{
+		Utilisateur user;
+		user = selectByPseudo(pseudo);
+		return user;
+	}
+	
+	public Utilisateur MAJUtilisateur(Utilisateur user) throws Exception{
+		try {
+		checkUtilisateur(user);
+		}catch (Exception err){
+			throw err;
+		}
+		update(user);		
+		return user;		
+	}
+	
+	public Utilisateur insérerUtilisateur(Utilisateur user) throws Exception{
+		try {
+		checkUtilisateur(user);
+		}catch (Exception err){
+			throw err;
+		}
+		insert(user);		
+		return user;		
+	}
+	
 	
 	public UtilisateurManager() {
 		utilisateurDAO = DAOFactory.getUtilisateurDAO();
@@ -60,9 +86,9 @@ public class UtilisateurManager {
 
 	}
 	
-	public Utilisateur selectById(int id) {
+	public Utilisateur selectByPseudo(String pseudo) {
 		
-		return utilisateurDAO.selectById(id);
+		return utilisateurDAO.selectByPseudo(pseudo);
 		
 	}
 	

@@ -37,7 +37,7 @@ public class CreerCompte extends HttpServlet {
 			user.setTelephone((int) request.getAttribute("Telephone"));
 		}
 		try {
-			UtilisateurManager.checkUtilisateur(user); // Vérification que tout est conforme aux condition de création de compte.
+			UtilisateurManager.insererUtilisateur(user); // Vérification que tout est conforme aux condition de création de compte.
 		}catch (Exception exception){
 			String messageErreur = exception.getMessage();
 			request.setAttribute("Erreurs", messageErreur);
