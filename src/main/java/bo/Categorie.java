@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Categorie {
 	
-	public int noCategorie;
-	public long libelle;
+	private int noCategorie;
+	private long libelle;
 	List<ArticleVendu> articleVendu;
 	
 	public Categorie() {
