@@ -12,7 +12,7 @@ public class UtilisateurManager {
 	
 	private static UtilisateurDAO utilisateurDAO;
 	
-	public Utilisateur checkUtilisateur(Utilisateur user) throws BLLException{
+	public Utilisateur checkUtilisateur(Utilisateur user) throws Exception{
 		BLLException err = new BLLException();
 		if (user.getPseudo().length() > 30 || user.getPseudo().length() == 0) {
 			err.ajouterErreur("Pseudo trop long ou vide");
@@ -67,7 +67,7 @@ public class UtilisateurManager {
 	}
 	
 	public void insert(Utilisateur utilisateur) {
-		if(utilisateur.getPseudo() ==null || utilisateur.getPseudo("")) {
+		if(utilisateur.getPseudo() ==null || utilisateur.getPseudo() == "") {
 			
 		}
 		

@@ -5,14 +5,14 @@ import java.util.List;
 
 public class ArticleVendu {
 	
-	public int noArticle;
-	public String nomArticle;
-	public String description;
-	public Date dateDebutEncheres;
-	public Date dateFinEncheres;
-	public int miseAPrix;
-	public int prixVente;
-	public String etatVente;
+	private int noArticle;
+	private String nomArticle;
+	private String description;
+	private Date dateDebutEncheres;
+	private Date dateFinEncheres;
+	private int miseAPrix;
+	private int prixVente;
+	private String etatVente;
 	List<Enchere>enchere;
 	private Utilisateur utilisateur;
 	private Categorie categorie;

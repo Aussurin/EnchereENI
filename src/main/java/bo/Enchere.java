@@ -3,8 +3,8 @@ package bo;
 import java.util.Date;
 
 public class Enchere {
-	 public Date dateEnchere;
-	 public int montant_enchere;
+	 private Date dateEnchere;
+	 private int montant_enchere;
 	 private ArticleVendu articleVendu;
 	 private Utilisateur utilisateur;
 	 
