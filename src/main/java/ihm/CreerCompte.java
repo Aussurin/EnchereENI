@@ -16,6 +16,7 @@ public class CreerCompte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
  //création d'une instance d'utilisateur avec les données correspondantes à celles du formulaire.
 		Utilisateur user = new Utilisateur();
 		
@@ -47,6 +48,7 @@ public class CreerCompte extends HttpServlet {
 		request.setAttribute("CreationReussie", "Creation Reussie");
 		request.getRequestDispatcher("PageAccueil").forward(request, response); //Redirection vers la page d'acceuil si la création du compte est réussie.
 }
+>>>>>>> master
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
