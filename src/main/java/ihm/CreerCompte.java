@@ -16,26 +16,41 @@ public class CreerCompte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ //création d'une instance d'utilisateur avec les données correspondantes à celles du formulaire.
 		Utilisateur user = new Utilisateur();
-		user.setPseudo(request.Pseudo);
-		user.setNom(request.Nom);
-		user.setPrenom(request.Prenom);
-		user.setEmail(request.Email);
-		user.setRue(request.Rue);
-		user.setCodePostal(request.CodePostal);
-		user.setVille(request.Ville);
-		user.setMotDePasse(request.MotDePasse);
-		user.setCredit(0);
-		if(request.Telephone != null) {
-			user.setTelephone(request.Telephone);
+		
+		String mdp = (String)request.getAttribute("MotDePasse");
+		String confirmMdp = (String)request.getAttribute("ConfirmMdp");
+		if(mdp.length() == 0 || confirmMdp.length() == 0 || mdp != confirmMdp) {
+			request.setAttribute("Erreurs", "Mots de passe vides ou différents");
 		}
+		user.setPseudo((String) request.getAttribute("Pseudo"));
+		user.setNom((String) request.getAttribute("Nom"));
+		user.setPrenom((String) request.getAttribute("Prenom"));
+		user.setEmail((String) request.getAttribute("Email"));
+		user.setRue((String) request.getAttribute("Rue"));
+		user.setCodePostal((int) request.getAttribute("CodePostal"));
+		user.setVille((String) request.getAttribute("Ville"));
+		user.setMotDePasse(mdp);
+		user.setCredit(0);
+		if(request.getAttribute("Telephone").equals(null)) {
+			user.setTelephone((int) request.getAttribute("Telephone"));
+		}
+		try {
+			UtilisateurManager.insererUtilisateur(user); // Vérification que tout est conforme aux condition de création de compte.
+		}catch (Exception exception){
+			String messageErreur = exception.getMessage();
+			request.setAttribute("Erreurs", messageErreur);
+			request.getRequestDispatcher("ErreurCreationCompte.jsp").forward(request, response); //Orientation vers une page d'erreur si non conforme.		
+		}
+		
+		request.setAttribute("CreationReussie", "Creation Reussie");
+		request.getRequestDispatcher("PageAccueil").forward(request, response); //Redirection vers la page d'acceuil si la création du compte est réussie.
 }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 
