@@ -11,11 +11,7 @@ import java.util.Date;
 import bo.ArticleVendu;
 
 public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO{
-	private Connection con;
-	private static String URL="jdbc:sqlserver://localhost:1433;databaseName=ENCHERE_ENI";
-	private static String USER="sa";
-	private static String PSWD="Pa$$w0rd";
-	
+
 	private static final String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS";
 	private static final String SELECT_BY_NO = "SELECT * FROM ARTICLES_VENDUS WHERE no_article=? ";
 
@@ -23,9 +19,9 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO{
 	public ArrayList<ArticleVendu> selectAll() throws DALException {
 		ArrayList<ArticleVendu>resultat=new ArrayList<ArticleVendu>();
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
+		
 			
-			PreparedStatement ps = con.prepareStatement("SELECT_ALL");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_ALL");
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -41,20 +37,15 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO{
 			}					
 		} catch (SQLException e) {
 			e.printStackTrace();}
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}return resultat;
+		JdbcTools.closeConnection();
+		return resultat;
 }
 
 	@Override
 	public ArticleVendu selectByNo(int id) throws DALException {
 		ArticleVendu resultat=null;
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			
-			PreparedStatement ps = con.prepareStatement("SELECT_BY_NO");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_BY_NO");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			
@@ -70,11 +61,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO{
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		}JdbcTools.closeConnection();
 		return resultat;
 	}
 

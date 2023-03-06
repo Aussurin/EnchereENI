@@ -25,3 +25,4 @@ hs_err_pid*
 
 #fichier de parametrage bdd
 settings.properties.txt
+TestcoBDD.java

@@ -13,33 +13,20 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
-	private Connection con;
-	private static String URL="jdbc:sqlserver://localhost:1433;databaseName=ENCHERE_ENI";
-	private static String USER="sa";
-	private static String PSWD="Pa$$w0rd";
-	
+
 	private static final String SELECT_ALL = "SELECT * FROM UTILISATEURS";
 	private static final String SELECT_BY_NO = "SELECT * FROM UTILISATEURS WHERE no_utilisateur=? ";
 	private static final String SELECT_BY_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=? ";
 	private static final String DELETE = "DELETE FROM UTILISATEUR WHERE no_utilisateur =? ";
 	
 	public UtilisateurDAOJdbcImpl() {
-			try {
-				DriverManager.registerDriver(new SQLServerDriver());
-				con = DriverManager.getConnection(URL, "sa","Pa$$w0rd");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}			
 	}
-	
 
 	@Override
 	public Utilisateur selectByNo(int id) throws DALException {
 		Utilisateur resultat=null;
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			
-			PreparedStatement ps = con.prepareStatement("SELECT_BY_NO");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_BY_NO");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			
@@ -59,11 +46,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			}					
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		}JdbcTools.closeConnection();
 		return resultat;
 	}
 
@@ -71,9 +54,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	public ArrayList<Utilisateur> selectAll() throws DALException {
 		ArrayList<Utilisateur>resultat=new ArrayList<Utilisateur>();
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			
-			PreparedStatement ps = con.prepareStatement("SELECT_ALL");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_ALL");
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -93,43 +74,27 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();}
 		
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}return resultat;
-		}
+			JdbcTools.closeConnection();
+			return resultat;
+			}
+		
 		
 	@Override
 	public void update(Utilisateur data) throws DALException {
-		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 
 	@Override
 	public void delete(int id) throws DALException {
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			PreparedStatement ps = con.prepareStatement(DELETE);
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(DELETE);
 			ps.setInt(1, id);
 			ps.executeUpdate();		
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		}JdbcTools.closeConnection();
 		
 	}
 }

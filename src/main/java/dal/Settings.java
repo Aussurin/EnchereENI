@@ -9,9 +9,8 @@ public class Settings {
 	static {
 		properties = new Properties();
 		try {
-			properties.load(Settings.class.getResourceAsStream("settingd.properties"));
+			properties.load(Settings.class.getResourceAsStream("settings.properties"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
