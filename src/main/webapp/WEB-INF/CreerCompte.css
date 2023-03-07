@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    font-size: 20px;
+    
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: gold;
+    font-family: "Ultra", serif;
+
+}
+body {  
+	
+    color: black;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+    margin-top: 60px;
+
+    
+}
+
+form {
+    margin-top: 200px;
+    margin-bottom: 60px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+
+
+input {
+	display: block;
+}
+
