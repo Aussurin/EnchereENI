@@ -4,10 +4,15 @@ import java.text.SimpleDateFormat;
 
 import bo.ArticleVendu;
 import bo.Utilisateur;
+import dal.ArticleVenduDAO;
 
 public class ArticleVenduManager {
 	
 	private static ArticleVenduDAO articleVenduDAO;
+	
+	public void ArticleManager(ArticleVenduDAO articleVenduDAO) {
+		this.articleVenduDAO = DAOFactory.getArticleVenduDAO();
+	}
 	
 	public ArticleVendu checkArticleVendu(ArticleVendu art) throws Exception{
 		BLLException err = new BLLException();
@@ -64,4 +69,13 @@ public class ArticleVenduManager {
 		articleVenduDAO.insertArticleVendu(art);
 		return art;	
 	}
+	
+	public void delete(int noArticle) {
+		ArticleVendu articleVendu = selectByNoArticle(noArticle);
+		if (articleVendu != null) {
+			this.articleVenduDAO.deleteArticle(articleVendu); }
+			else {
+				System.out.println("L'article n'existe pas");
+			}
+		}	
 }
