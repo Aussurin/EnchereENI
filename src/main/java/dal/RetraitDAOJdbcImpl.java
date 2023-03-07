@@ -11,11 +11,7 @@ import bo.Retrait;
 
 
 public class RetraitDAOJdbcImpl implements RetraitDAO {
-	private Connection con;
-	private static String URL="jdbc:sqlserver://localhost:1433;databaseName=ENCHERE_ENI";
-	private static String USER="sa";
-	private static String PSWD="Pa$$w0rd";
-	
+
 	private static final String SELECT_ALL = "SELECT * FROM RETRAITS";
 	private static final String SELECT_BY_NO = "SELECT * FROM RETRAITS WHERE no_article=? ";
 	
@@ -23,9 +19,7 @@ public class RetraitDAOJdbcImpl implements RetraitDAO {
 	public ArrayList<Retrait> selectAll() throws DALException {
 		ArrayList<Retrait>resultat=new ArrayList<Retrait>();
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			
-			PreparedStatement ps = con.prepareStatement("SELECT_ALL");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_ALL");
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -38,20 +32,14 @@ public class RetraitDAOJdbcImpl implements RetraitDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();}
 		
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}return resultat;
+		JdbcTools.closeConnection();return resultat;
 }
 	
 	@Override
 	public Retrait selectByNo(int id) throws DALException {
 		Retrait resultat=null;
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			
-			PreparedStatement ps = con.prepareStatement("SELECT_BY_NO");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_BY_NO");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			
@@ -62,18 +50,13 @@ public class RetraitDAOJdbcImpl implements RetraitDAO {
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		}JdbcTools.closeConnection();
 		return resultat;
 	}
 	
 	
 	@Override
 	public void update(Retrait data) throws DALException {
-		// TODO Auto-generated method stub
 		
 	}
 

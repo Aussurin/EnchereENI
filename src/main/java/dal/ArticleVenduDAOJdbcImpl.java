@@ -9,73 +9,72 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bo.ArticleVendu;
+import bo.Utilisateur;
 
 public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO{
-	private Connection con;
-	private static String URL="jdbc:sqlserver://localhost:1433;databaseName=ENCHERE_ENI";
-	private static String USER="sa";
-	private static String PSWD="Pa$$w0rd";
-	
+
 	private static final String SELECT_ALL = "SELECT * FROM ARTICLES_VENDUS";
 	private static final String SELECT_BY_NO = "SELECT * FROM ARTICLES_VENDUS WHERE no_article=? ";
+	private static final String INSERT = "INSERT INTO ARTICLES-VENDUS (no_article, nom_article, description, date_debut_encheres, date_fin_ encheres, prix_initial, prix_vente, no_utilisateur, no_catégorie) VALUES (?,?,?,?,?,?,?,?)";
 
+	
 	@Override
-	public ArrayList<ArticleVendu> selectAll() throws DALException {
+ 	public ArrayList<ArticleVendu> selectAll() throws DALException {
 		ArrayList<ArticleVendu>resultat=new ArrayList<ArticleVendu>();
-		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
+		try {		
 			
-			PreparedStatement ps = con.prepareStatement("SELECT_ALL");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_ALL");
 			ResultSet rs = ps.executeQuery();
-			
+
+			ArticleVendu art = new ArticleVendu();			
 			while(rs.next()) {
-				int id = rs.getInt("no_article");
-				String nomArticle = rs.getString("nom_article").trim();
-				String description = rs.getString("descritption").trim();
-				Date dateDebut = rs.getDate("date_debut_enchere");
-				Date dateFin = rs.getDate("date_fin_enchere");
-				int prixInitial  = rs.getInt("prix_initial");
-				int prixVente  = rs.getInt("prix_vente");
-				int noUtilisateur  = rs.getInt("no_utilisateur");
-				int noCategorie  = rs.getInt("no_categorie");			
+				art.setNoArticle(rs.getInt("no_article"));
+				art.setNomArticle(rs.getString("nom_article").trim());
+				art.setDescription(rs.getString("descritption").trim());
+				art.setDateDebutEncheres(rs.getDate("date_debut_enchere"));
+				art.setDateFinEncheres(rs.getDate("date_fin_enchere"));
+				art.setMiseAPrix(rs.getInt("prix_initial"));
+				art.setPrixVente(rs.getInt("prix_vente"));
+				art.setNoUtilisateur(rs.getInt("no_utilisateur"));
+				int noCategorie  = rs.getInt("no_categorie");	
+				resultat.add(art);
 			}					
 		} catch (SQLException e) {
 			e.printStackTrace();}
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}return resultat;
+		JdbcTools.closeConnection();
+		return resultat;
 }
 
 	@Override
 	public ArticleVendu selectByNo(int id) throws DALException {
-		ArticleVendu resultat=null;
+		ArticleVendu art=null;
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			
-			PreparedStatement ps = con.prepareStatement("SELECT_BY_NO");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_BY_NO");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			
+			UtilisateurDAO userDAO = DAOFactory.getUtilisateurDAO();
 			if(rs.next()) {
-				String nomArticle = rs.getString("nom_article").trim();
-				String description = rs.getString("descritption").trim();
-				Date dateDebut = rs.getDate("date_debut_enchere");
-				Date dateFin = rs.getDate("date_fin_enchere");
-				int prixInitial  = rs.getInt("prix_initial");
-				int prixVente  = rs.getInt("prix_vente");
-				int noUtilisateur  = rs.getInt("no_utilisateur");
-				int noCategorie  = rs.getInt("no_categorie");
+				Utilisateur user = userDAO.selectByNo(rs.getInt("no_utilisateur"));
+				art.setNoArticle(rs.getInt("no_article"));
+				art.setNomArticle(rs.getString("nom_article").trim());
+				art.setDescription(rs.getString("descritption").trim());
+				art.setDateDebutEncheres(rs.getDate("date_debut_enchere"));
+				art.setDateFinEncheres(rs.getDate("date_fin_enchere"));
+				art.setMiseAPrix(rs.getInt("prix_initial"));
+				art.setPrixVente(rs.getInt("prix_vente"));
+				art.setUtilisateur(user);
+				int noCategorie = rs.getInt("no_categorie");
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
-		return resultat;
+		JdbcTools.closeConnection();
+		return art;
 	}
 
+	public ArticleVendu enregistrement(ArticleVendu art) {
+		
+		return art;
+		
+	}
 }
