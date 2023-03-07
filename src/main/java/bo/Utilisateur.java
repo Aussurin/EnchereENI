@@ -9,21 +9,21 @@ public class Utilisateur {
 	private String nom;
 	private String prenom;
 	private String email;
-	private int telephone;
+	private String telephone;
 	private String rue;
-	private int codePostal;
+	private String codePostal;
 	private String ville;
 	private String motDePasse;
 	private int credit;
-	private String administrateur;
+	private boolean administrateur;
 	List<ArticleVendu> articleVendu;
 	List<Enchere> enchere;
 	
 	
 	
 	
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, int telephone,
-			String rue, int codePostal, String ville, String motDePasse, int credit, String administrateur,
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur,
 			List<ArticleVendu> articleVendu, List<Enchere> enchere) {
 		super();
 		this.noUtilisateur = noUtilisateur;
@@ -73,8 +73,8 @@ public class Utilisateur {
 	}
 
 
-	public void setCodePostal(int codePostal) {
-		this.codePostal = codePostal;
+	public void setCodePostal(String string) {
+		this.codePostal = string;
 	}
 
 
@@ -144,8 +144,8 @@ public class Utilisateur {
 		return telephone;
 	}
 	
-	public void setTelephone(int telephone) {
-		this.telephone = telephone;
+	public void setTelephone(String string) {
+		this.telephone = string;
 	}
 	public String getRue() {
 		return rue;
@@ -186,8 +186,8 @@ public class Utilisateur {
 		return administrateur;
 	}
 	
-	public void setAdministrateur(String administrateur) {
-		this.administrateur = administrateur;
+	public void setAdministrateur(boolean b) {
+		this.administrateur = b;
 	}
 	
 	public Integer getNoUtilisateur() {
