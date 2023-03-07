@@ -7,6 +7,7 @@ import java.util.List;
 import bo.Utilisateur;
 
 import dal.DAOFactory;
+import dal.UtilisateurDAO;
 
 public class UtilisateurManager {
 	
@@ -46,6 +47,12 @@ public class UtilisateurManager {
 		if(err.getMessage() == null) {
 			return user;
 		}
+		if (!utilisateurDAO.checkForUniqueUtilisateurPseudo(user.getPseudo())) {
+            err.ajouterErreur("Ce pseudo existe déjà. Veuillez en choisir un autre.");
+        }
+		if (!utilisateurDAO.checkForUniqueUtilisateurEmail(user.getEmail())) {
+            err.ajouterErreur("Cet email est déjà utilisé.");
+        }
 		throw err;
 	}
 
@@ -63,7 +70,7 @@ public class UtilisateurManager {
 		}
 		update(user);		
 		return user;		
-	}
+}
 	
 	public Utilisateur insérerUtilisateur(Utilisateur user) throws Exception{
 		try {
@@ -73,46 +80,40 @@ public class UtilisateurManager {
 		}
 		insert(user);		
 		return user;		
-	}
+}
 	
-	
+
 	public UtilisateurManager() {
 		utilisateurDAO = DAOFactory.getUtilisateurDAO();
-	}
+}
 	
 	public List<Utilisateur> selectAll(){
-		
 		return  utilisateurDAO.selectAll();
-
+}
+	public Utilisateur selectById(int noUtilisateur) throws BLLException {
+		return this.utilisateurDAO.selectUtilisateurByid(noUtilisateur);
 	}
 	
 	public Utilisateur selectByPseudo(String pseudo) {
-		
 		return utilisateurDAO.selectByPseudo(pseudo);
-		
+}
+	public Utilisateur selectByEmail(String email) throws BLLException {
+		email = email.trim();
+		return this.utilisateurDAO.selectUtilisateurByEmail(email);
 	}
 	
 	public void insert(Utilisateur utilisateur) {
-		if(utilisateur.getPseudo() ==null || utilisateur.getPseudo() == "") {
-			
-		}
-		
-		utilisateurDAO.insert(utilisateur);
-		
-	}
+		if(utilisateur.getPseudo() ==null || utilisateur.getPseudo() == "") {	
+		}	
+		utilisateurDAO.insert(utilisateur);	
+}
 	
 	public void update (Utilisateur utilisateur) {
-		
 		utilisateurDAO.update(utilisateur);
-		
-		
-		
-	}
+}
 	
 	public void delete (int id) {
-		utilisateurDAO.delete(id);
-		
-	}
+		utilisateurDAO.delete(id);	
+}
 	
-
 }
