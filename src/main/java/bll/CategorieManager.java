@@ -10,10 +10,10 @@ import dal.DALException;
 import dal.DAOFactory;
 
 public class CategorieManager {
-private static CategorieDAO categorieDAO;
+private CategorieDAO categorieDAO;
 
 	public CategorieManager(CategorieDAO categorieDAO) {
-	this.categorieDAO = DAOFactory.getCategorieDAO();
+	categorieDAO = DAOFactory.getCategorieDAO();
 	}
 	
 	public Categorie addCategorie(int noCategorie, long libelle)throws Exception {

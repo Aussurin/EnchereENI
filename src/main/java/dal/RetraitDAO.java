@@ -15,4 +15,6 @@ public interface RetraitDAO {
 			//Modifier les attributs d'un retrait connu en BD
 			public void update(Retrait data) throws DALException;
 
+			void insert(Retrait data) throws DALException;
+
 }

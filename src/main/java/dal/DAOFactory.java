@@ -21,11 +21,11 @@ public class DAOFactory {
 	public static RetraitDAO getRetraitDAO() {
 		RetraitDAO retraitDAO = null;
 		try {
-		retraitDAO = new RetraitDAOJdbcImpl();
+			retraitDAO = new RetraitDAOJdbcImpl();
 		} catch (Exception e) {
-		e.printStackTrace();	
-	}
-	return retraitDAO;
+			e.printStackTrace();	
+		}
+		return retraitDAO;
 }
 	
 	public static CategorieDAO getCategorieDAO() {

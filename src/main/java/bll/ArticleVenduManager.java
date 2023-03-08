@@ -1,18 +1,16 @@
 package bll;
 
-import java.text.SimpleDateFormat;
-
 import bo.ArticleVendu;
-import bo.Utilisateur;
 import dal.ArticleVenduDAO;
+import dal.DALException;
 import dal.DAOFactory;
 
 public class ArticleVenduManager {
 	
-	private static ArticleVenduDAO articleVenduDAO;
+	private ArticleVenduDAO articleVenduDAO;
 	
-	public void ArticleManager(ArticleVenduDAO articleVenduDAO) {
-		this.articleVenduDAO = DAOFactory.getArticleVenduDAO();
+	public void ArticleManager() {
+		articleVenduDAO = DAOFactory.getArticleVenduDAO();
 	}
 	
 	public ArticleVendu checkArticleVendu(ArticleVendu art) throws Exception{
@@ -59,25 +57,20 @@ public class ArticleVenduManager {
 		return art;
 	}
 		
-	public ArticleVendu select(int noArticle) {		
-		ArticleVendu art = articleVenduDAO.selectByNoArticle(noArticle);	
+	public ArticleVendu select(int noArticle) throws DALException {		
+		ArticleVendu art = articleVenduDAO.selectByNo(noArticle);	
 		return art;
 	}
-	public ArticleVendu update(ArticleVendu art) {	
-		articleVenduDAO.updateArticleVendu(art);
+	public ArticleVendu update(ArticleVendu art) throws DALException {	
+		articleVenduDAO.update(art);
 		return art;	
 	}
-	public ArticleVendu insert(ArticleVendu art) {	
-		articleVenduDAO.insertArticleVendu(art);
+	public ArticleVendu insert(ArticleVendu art) throws DALException {	
+		articleVenduDAO.enregistrement(art);
 		return art;	
 	}
 	
-	public void delete(int noArticle) {
-		ArticleVendu articleVendu = selectByNoArticle(noArticle);
-		if (articleVendu != null) {
-			this.articleVenduDAO.deleteArticle(articleVendu); }
-			else {
-				System.out.println("L'article n'existe pas");
-			}
+	public void delete(int noArticle) throws DALException {
+			this.articleVenduDAO.delete(noArticle);
 		}	
 }

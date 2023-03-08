@@ -42,7 +42,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
 	@Override
 	public Utilisateur selectConnection(String pseudo, String mdp) throws DALException {
-		Utilisateur resultat = null;
+		Utilisateur resultat = new Utilisateur();
 		try {
 			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(CONNECTION);
 			ps.setString(1, pseudo);
@@ -173,40 +173,39 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		return user;
 	}
 
-	public int selectByPseudo(String pseudo) throws DALException {
-		int resultat = 0;
+	@Override
+	public Utilisateur selectByPseudo(String pseudo) throws DALException {
+		Utilisateur user = new Utilisateur();
 		try {
 			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_BY_PSEUDO);
 			ps.setString(1, pseudo);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				resultat = rs.getInt("no_utilisateur");				
+				user.setNoUtilisateur(rs.getInt("no_utilisateur"));				
 			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		JdbcTools.closeConnection();
-		return resultat;
+		return user;
 	}
 	
-	public int selectByEmail(String email) throws DALException {
-		int resultat = 0;
+	@Override
+	public Utilisateur selectByEmail(String email) throws DALException {
+		Utilisateur user = new Utilisateur();
 		try {
 			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_BY_PSEUDO);
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				String email2 = rs.getString("email");	
-				if (!email2.isEmpty()) {
-					resultat = 1;
-				}
-			} 
+				user.setEmail(rs.getString("email"));	
+				} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		JdbcTools.closeConnection();
-		return resultat;
+		return user;
 	}
 }

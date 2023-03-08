@@ -14,6 +14,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO{
 	private static final String INSERT = "INSERT INTO ARTICLES-VENDUS (nom_article, description, date_debut_encheres, date_fin_ encheres, prix_initial, prix_vente, no_utilisateur, no_catégorie) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String UPDATE = "UPDATE table ARTICLE_VENDUS set nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_ encheres = ?, prix_initial = ?, prix_vente = ?, no_catégorie = ?";
 	private static final String SELECT_BY_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie=?";
+	private static final String DELETE = "DELETE FROM ARTICLES_VENDUS WHERE no_article = ?";
 	
 	@Override
  	public ArrayList<ArticleVendu> selectAll() throws DALException {
@@ -140,5 +141,17 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO{
 		
 		JdbcTools.closeConnection();
 		return art;
+	}
+
+	public void delete(int id) throws DALException{
+		try {
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(DELETE);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		JdbcTools.closeConnection();
 	}
 }

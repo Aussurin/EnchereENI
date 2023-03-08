@@ -1,7 +1,6 @@
 package dal;
 
 import java.util.ArrayList;
-import java.util.List;
 import bo.Utilisateur;
 
 public interface UtilisateurDAO {
@@ -24,7 +23,9 @@ public interface UtilisateurDAO {
 	//S'enregistrer
 	public Utilisateur insert(Utilisateur user) throws DALException;
 	
-	public int selectByPseudo(String pseudo) throws DALException;
+	public Utilisateur selectByPseudo(String pseudo) throws DALException;
 
-	public int selectByEmail(String email) throws DALException;
+	public Utilisateur selectByEmail(String email) throws DALException;
+
+
 }
