@@ -5,11 +5,6 @@ import java.util.List;
 import bo.Utilisateur;
 
 public interface UtilisateurDAO {
-
-	public static void testStaticMethode() {
-		System.out.println("Test Static");
-	}
-	
 	
 	//Sélectionner un utilisateur par son no_utilisateur
 	public Utilisateur selectByNo(int id) throws DALException;
@@ -29,5 +24,7 @@ public interface UtilisateurDAO {
 	//S'enregistrer
 	public Utilisateur insert(Utilisateur user) throws DALException;
 	
-	
+	public int selectByPseudo(String pseudo) throws DALException;
+
+	public int selectByEmail(String email) throws DALException;
 }

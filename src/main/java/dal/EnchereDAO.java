@@ -3,6 +3,7 @@ package dal;
 import java.util.ArrayList;
 
 import bo.Enchere;
+import bo.Utilisateur;
 
 public interface EnchereDAO {
 
@@ -17,5 +18,7 @@ public interface EnchereDAO {
 		
 		//Supprimer une enchère
 		public void delete(int id) throws DALException;
+
+		ArrayList<Enchere> selectByUtilisateur(Utilisateur user) throws DALException;
 
 }

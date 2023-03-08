@@ -49,7 +49,7 @@ public class Utilisateur {
 
 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String rue,
-			int codePostal, String ville, String motDePasse, int credit, String administrateur,
+			String codePostal, String ville, String motDePasse, int credit, boolean administrateur,
 			List<ArticleVendu> articleVendu, List<Enchere> enchere) {
 		super();
 		this.noUtilisateur = noUtilisateur;
@@ -68,7 +68,7 @@ public class Utilisateur {
 	}
 
 
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
 
@@ -140,7 +140,7 @@ public class Utilisateur {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
 	
@@ -154,11 +154,11 @@ public class Utilisateur {
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
-	public int codePostal() {
+	public String codePostal() {
 		return codePostal;
 	}
 	
-	public void setcodePostal(int codePostal) {
+	public void setcodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public String getVille() {
@@ -182,7 +182,7 @@ public class Utilisateur {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
-	public String getAdministrateur() {
+	public boolean getAdministrateur() {
 		return administrateur;
 	}
 	
@@ -198,6 +198,7 @@ public class Utilisateur {
 		this.noUtilisateur = noUtilisateur;
 	}
 
+	
 
 	@Override
 	public String toString() {
@@ -214,6 +215,8 @@ public class Utilisateur {
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
+
+
 
 
 
