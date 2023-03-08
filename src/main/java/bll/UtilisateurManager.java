@@ -5,7 +5,7 @@ import java.util.List;
 
 
 import bo.Utilisateur;
-
+import dal.DALException;
 import dal.DAOFactory;
 import dal.UtilisateurDAO;
 
@@ -13,7 +13,7 @@ public class UtilisateurManager {
 	
 	private static UtilisateurDAO utilisateurDAO;
 	
-	public Utilisateur checkUtilisateur(Utilisateur user) throws Exception{
+	public static Utilisateur checkUtilisateur(Utilisateur user) throws Exception{
 		BLLException err = new BLLException();
 		if (user.getPseudo().length() > 30 || user.getPseudo().length() == 0) {
 			err.ajouterErreur("Pseudo trop long ou vide");
@@ -27,14 +27,14 @@ public class UtilisateurManager {
 		if (user.getEmail().length() > 50 || user.getEmail().length() == 0) {
 			err.ajouterErreur("Email trop long ou vide");
 		}
-		Integer tel = user.getTelephone();
+		String tel = user.getTelephone();
 		if (tel.toString().length() > 15 || tel.toString().length() == 0 ) {
 			err.ajouterErreur("Téléphone trop long ou vide");
 		}
 		if (user.getRue().length() > 30 || user.getRue().length() == 0) {
 			err.ajouterErreur("Rue trop long ou vide");
 		}
-		Integer codepostal = user.getCodePostal();
+		String codepostal = user.getCodePostal();
 		if (codepostal.toString().length() > 10 || codepostal.toString().length() == 0) {
 			err.ajouterErreur("Code postal invalide");
 		}
@@ -44,10 +44,10 @@ public class UtilisateurManager {
 		if (user.getMotDePasse().length() > 30 || user.getMotDePasse().length() == 0) {
 			err.ajouterErreur("Mot de passe trop long ou vide");
 		}
-		if (utilisateurDAO.selectByPseudo==0) {
+		if (utilisateurDAO.selectByPseudo(user.getPseudo())==0) {
             err.ajouterErreur("Ce pseudo existe déjà. Veuillez en choisir un autre.");
         }
-		if (utilisateurDAO.selectByEmail==0) {
+		if (utilisateurDAO.selectByEmail(user.getEmail())==0) {
             err.ajouterErreur("Cet email est déjà utilisé.");
         }
 		if(err.getMessage() == null) {
@@ -72,7 +72,7 @@ public class UtilisateurManager {
 		return user;		
 }
 	
-	public Utilisateur insérerUtilisateur(Utilisateur user) throws Exception{
+	public static Utilisateur insérerUtilisateur(Utilisateur user) throws Exception{
 		try {
 		checkUtilisateur(user);
 		}catch (Exception err){
@@ -102,7 +102,7 @@ public class UtilisateurManager {
 		return this.utilisateurDAO.selectUtilisateurByEmail(email);
 	}
 	
-	public void insert(Utilisateur utilisateur) {
+	public static void insert(Utilisateur utilisateur) throws DALException {
 		if(utilisateur.getPseudo() ==null || utilisateur.getPseudo() == "") {	
 		}	
 		utilisateurDAO.insert(utilisateur);	
