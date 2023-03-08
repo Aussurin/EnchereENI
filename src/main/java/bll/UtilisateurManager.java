@@ -44,15 +44,15 @@ public class UtilisateurManager {
 		if (user.getMotDePasse().length() > 30 || user.getMotDePasse().length() == 0) {
 			err.ajouterErreur("Mot de passe trop long ou vide");
 		}
+		if (utilisateurDAO.selectByPseudo==0) {
+            err.ajouterErreur("Ce pseudo existe déjà. Veuillez en choisir un autre.");
+        }
+		if (utilisateurDAO.selectByEmail==0) {
+            err.ajouterErreur("Cet email est déjà utilisé.");
+        }
 		if(err.getMessage() == null) {
 			return user;
 		}
-		if (!utilisateurDAO.checkForUniqueUtilisateurPseudo(user.getPseudo())) {
-            err.ajouterErreur("Ce pseudo existe déjà. Veuillez en choisir un autre.");
-        }
-		if (!utilisateurDAO.checkForUniqueUtilisateurEmail(user.getEmail())) {
-            err.ajouterErreur("Cet email est déjà utilisé.");
-        }
 		throw err;
 	}
 
@@ -110,10 +110,12 @@ public class UtilisateurManager {
 	
 	public void update (Utilisateur utilisateur) {
 		utilisateurDAO.update(utilisateur);
-}
+}	
 	
+	public void delete (Utilisateur utilisateurSession) {
+		utilisateurDAO.delete(utilisateurSession);	
+}
 	public void delete (int id) {
 		utilisateurDAO.delete(id);	
 }
-	
 }
