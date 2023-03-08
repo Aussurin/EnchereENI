@@ -14,7 +14,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String DELETE = "DELETE FROM UTILISATEUR WHERE no_utilisateur = ?";
 	private static final String CONNECTION = "SELECT * FROM UTILISATEUR WHERE pseudo = ? AND mot_de_passe = ?";
 	private static final String ENREGISTREMENT = "INSERT INTO UTILISATEUR (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit) VALUES (?,?,?,?,?,?,?,?,?,?)";
-	private static final String MODIFICATION = "UPDATE table UTILISATEUR SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? WHERE no_utilisateur = ?";
+	private static final String MODIFICATION = "UPDATE UTILISATEUR SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? WHERE no_utilisateur = ?";
 	
 	
 	public UtilisateurDAOJdbcImpl() {

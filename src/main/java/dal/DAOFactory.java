@@ -5,7 +5,6 @@ public class DAOFactory {
 	RetraitDAO retraitDAO;
 	CategorieDAO categorieDAO;
 	ArticleVenduDAO articleVenduDAO;
-	EnchereDAO enchereDAO;
 
 	public static UtilisateurDAO getUtilisateurDAO() {
 		UtilisateurDAO utilisateurDAO = null;
@@ -48,14 +47,5 @@ public class DAOFactory {
 	return articleVenduDAO;
 }
 	
-	public static EnchereDAO getEnchereDAO() {
-		EnchereDAO enchereDAO = null;
-		try {
-		enchereDAO = new EnchereDAOJdbcImpl();
-		} catch (Exception e) {
-		e.printStackTrace();	
-	}
-	return enchereDAO;
-}
 	
 }

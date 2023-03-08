@@ -2,9 +2,7 @@ package bll;
 
 import java.util.List;
 
-import bo.ArticleVendu;
 import bo.Categorie;
-import dal.ArticleVenduDAO;
 import dal.CategorieDAO;
 import dal.DALException;
 import dal.DAOFactory;
@@ -16,24 +14,16 @@ private CategorieDAO categorieDAO;
 	categorieDAO = DAOFactory.getCategorieDAO();
 	}
 	
-	public Categorie addCategorie(int noCategorie, long libelle)throws Exception {
+	public void addCategorie(String libelle)throws Exception {
 		BLLException err = new BLLException();
 		
-		Categorie cat = null;
-		cat.setNoCategorie(noCategorie);
-		cat.setLibelle(libelle);
-		this.categorieDAO.addCategorie(cat);
-		
-		if (cat.getLibelle() > 30 || cat.getLibelle() == 0) {
+		if (libelle.length() > 30 || libelle.length() == 0) {
 			err.ajouterErreur("Libelle de la catégorie trop longue ou vide");
 		}
-		if (cat.getNoCategorie() > 300 || cat.getNoCategorie() == 0) {
-			err.ajouterErreur("Description de la catégorie trop longue ou vide");
-	    }
-		 if (!categorieDAO.checkForUniqueCategorieLibelle(cat.getLibelle())) {
+		 if (!categorieDAO.selectByLibelle(libelle).getLibelle().isEmpty()) {
 	            err.ajouterErreur("Cette catégorie existe déjà");
 	    if(err.getMessage() == null) {
-			return cat;
+			insert(libelle);
 	    }
 	    throw err;
 	    }
@@ -47,12 +37,12 @@ private CategorieDAO categorieDAO;
 		}
 	}
 	
-	public Categorie insert(int noCategorie) {		
-		return categorieDAO.insert(noCategorie);		
+	public Categorie insert(String libelle) {		
+		return categorieDAO.insert(libelle);		
 	}
 	
-	public Categorie select(int noCategorie) {		
-		return categorieDAO.selectByNoCategorie(noCategorie);		
+	public Categorie select(int noCategorie) throws DALException {		
+		return categorieDAO.selectByNo(noCategorie);		
 	}
 	
 	public Categorie update(Categorie cat) {	
