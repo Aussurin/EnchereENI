@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import bo.ArticleVendu;
 import bo.Utilisateur;
 import dal.ArticleVenduDAO;
+import dal.DAOFactory;
 
 public class ArticleVenduManager {
 	
@@ -59,7 +60,8 @@ public class ArticleVenduManager {
 	}
 		
 	public ArticleVendu select(int noArticle) {		
-		return articleVenduDAO.selectByNoArticle(noArticle);		
+		ArticleVendu art = articleVenduDAO.selectByNoArticle(noArticle);	
+		return art;
 	}
 	public ArticleVendu update(ArticleVendu art) {	
 		articleVenduDAO.updateArticleVendu(art);

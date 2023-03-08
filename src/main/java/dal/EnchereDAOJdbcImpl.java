@@ -9,34 +9,29 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bo.Enchere;
+import bo.Utilisateur;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO {
-	private Connection con;
-	private static String URL="jdbc:sqlserver://localhost:1433;databaseName=ENCHERE_ENI";
-	private static String USER="sa";
-	private static String PSWD="Pa$$w0rd";
-	
-	private static final String SELECT_ALL = "SELECT * FROM ENCHERES";
+
+	private static final String SELECT_BY_UTILISATEUR = "SELECT * FROM ENCHERES WHERE no_utilisateur = ?";
 	private static final String SELECT_BY_NO = "SELECT * FROM ENCHERES WHERE no_enchere=? ";
 
 	@Override
 	public ArrayList<Enchere> selectAll() throws DALException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Enchere selectByNo(int id) throws DALException {
+	public ArrayList<Enchere> selectByUtilisateur(Utilisateur user) throws DALException {
 		ArrayList<Enchere>resultat=new ArrayList<Enchere>();
 		try {
-			con = DriverManager.getConnection(URL, USER, PSWD);
-			
-			PreparedStatement ps = con.prepareStatement("SELECT_ALL");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_BY_UTILISATEUR);
+			ps.setInt(1, user.getNoUtilisateur());
 			ResultSet rs = ps.executeQuery();
-			
+			Enchere enc = new Enchere();
 			while(rs.next()) {
-				int noEnchere = rs.getInt("no_enchere");
-				Date dateEnchere = rs.getDate("date_enchere");
+				enc = null;
+				enc.setDateEnchere(rs.getDate("date_enchere"));
 				int montantEnchere = rs.getInt("montant_enchere");
 				int noArticle = rs.getInt("no_article");
 				int noUtilisateur = rs.getInt("no_utilisateur");					
@@ -45,11 +40,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();}
 		
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}return resultat;
+		JdbcTools.closeConnection();return resultat;
 	}
 
 	@Override

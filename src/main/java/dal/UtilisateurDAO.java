@@ -18,5 +18,13 @@ public interface UtilisateurDAO {
 	//Supprimer un utilisateur
 	public void delete(int id) throws DALException;
 	
+	//Se connecter
+	public Utilisateur selectConnection(String pseudo, String mdp) throws DALException;
+	
+	//S'enregistrer
+	public Utilisateur insert(Utilisateur user) throws DALException;
+	
+	public int selectByPseudo(String pseudo) throws DALException;
 
+	public int selectByEmail(String email) throws DALException;
 }

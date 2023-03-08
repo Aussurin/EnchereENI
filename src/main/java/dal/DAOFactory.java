@@ -1,6 +1,11 @@
 package dal;
 
 public class DAOFactory {
+	UtilisateurDAO utilisateurDAO;
+	RetraitDAO retraitDAO;
+	CategorieDAO categorieDAO;
+	ArticleVenduDAO articleVenduDAO;
+	EnchereDAO enchereDAO;
 
 	public static UtilisateurDAO getUtilisateurDAO() {
 		UtilisateurDAO utilisateurDAO = null;
