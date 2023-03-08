@@ -11,9 +11,9 @@ import dal.UtilisateurDAO;
 
 public class UtilisateurManager {
 	
-	private static UtilisateurDAO utilisateurDAO;
+	private UtilisateurDAO utilisateurDAO;
 	
-	public static Utilisateur checkUtilisateur(Utilisateur user) throws Exception{
+	public Utilisateur checkUtilisateur(Utilisateur user) throws Exception{
 		BLLException err = new BLLException();
 		if (user.getPseudo().length() > 30 || user.getPseudo().length() == 0) {
 			err.ajouterErreur("Pseudo trop long ou vide");
@@ -44,10 +44,11 @@ public class UtilisateurManager {
 		if (user.getMotDePasse().length() > 30 || user.getMotDePasse().length() == 0) {
 			err.ajouterErreur("Mot de passe trop long ou vide");
 		}
-		if (utilisateurDAO.selectByPseudo(user.getPseudo())==0) {
+		
+		if (utilisateurDAO.selectByPseudo(user.getPseudo()).getNoUtilisateur() != null) {
             err.ajouterErreur("Ce pseudo existe déjà. Veuillez en choisir un autre.");
         }
-		if (utilisateurDAO.selectByEmail(user.getEmail())==0) {
+		if (utilisateurDAO.selectByEmail(user.getEmail()).getEmail() != null) {
             err.ajouterErreur("Cet email est déjà utilisé.");
         }
 		if(err.getMessage() == null) {
@@ -72,12 +73,10 @@ public class UtilisateurManager {
 		return user;		
 }
 	
-	public static Utilisateur insérerUtilisateur(Utilisateur user) throws Exception{
-		try {
+	public Utilisateur insérerUtilisateur(Utilisateur user) throws Exception{
+		
 		checkUtilisateur(user);
-		}catch (Exception err){
-			throw err;
-		}
+		
 		insert(user);		
 		return user;		
 }
@@ -87,35 +86,40 @@ public class UtilisateurManager {
 		utilisateurDAO = DAOFactory.getUtilisateurDAO();
 }
 	
-	public List<Utilisateur> selectAll(){
+	public List<Utilisateur> selectAll() throws DALException{
 		return  utilisateurDAO.selectAll();
 }
-	public Utilisateur selectById(int noUtilisateur) throws BLLException {
-		return this.utilisateurDAO.selectUtilisateurByid(noUtilisateur);
+	public Utilisateur selectById(int noUtilisateur) throws BLLException, DALException {
+		return this.utilisateurDAO.selectByNo(noUtilisateur);
 	}
 	
-	public Utilisateur selectByPseudo(String pseudo) {
+	public Utilisateur selectByPseudo(String pseudo) throws DALException {
 		return utilisateurDAO.selectByPseudo(pseudo);
 }
-	public Utilisateur selectByEmail(String email) throws BLLException {
+	public Utilisateur selectByEmail(String email) throws BLLException, DALException {
 		email = email.trim();
-		return this.utilisateurDAO.selectUtilisateurByEmail(email);
+		return this.utilisateurDAO.selectByEmail(email);
 	}
 	
-	public static void insert(Utilisateur utilisateur) throws DALException {
-		if(utilisateur.getPseudo() ==null || utilisateur.getPseudo() == "") {	
-		}	
-		utilisateurDAO.insert(utilisateur);	
+	public void insert(Utilisateur utilisateur) throws DALException {
+		if(utilisateur.getPseudo() !=null && utilisateur.getPseudo() != "") {	
+			utilisateurDAO.insert(utilisateur);
+		}else {
+			DALException err = new DALException("Pseudo obligatoire");
+			throw err;
+		}
+		
 }
 	
-	public void update (Utilisateur utilisateur) {
+	public void update(Utilisateur utilisateur) throws DALException {
 		utilisateurDAO.update(utilisateur);
 }	
 	
-	public void delete (Utilisateur utilisateurSession) {
-		utilisateurDAO.delete(utilisateurSession);	
+	public void delete(Utilisateur utilisateurSession) throws DALException {
+		int utilisateurId = utilisateurSession.getNoUtilisateur();
+		utilisateurDAO.delete(utilisateurId);	
 }
-	public void delete (int id) {
+	public void delete(int id) throws DALException {
 		utilisateurDAO.delete(id);	
 }
 }

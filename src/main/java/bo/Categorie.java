@@ -5,7 +5,7 @@ import java.util.List;
 public class Categorie {
 	
 	private int noCategorie;
-	private long libelle;
+	private String libelle;
 	List<ArticleVendu> articleVendu;
 	
 	public Categorie() {
@@ -15,7 +15,7 @@ public class Categorie {
 	
 	
 
-	public Categorie(int noCategorie, long libelle, List<ArticleVendu> articleVendu) {
+	public Categorie(int noCategorie, String libelle, List<ArticleVendu> articleVendu) {
 		super();
 		this.noCategorie = noCategorie;
 		this.libelle = libelle;
@@ -38,11 +38,11 @@ public class Categorie {
 		this.noCategorie = noCategorie;
 	}
 	
-	public long getLibelle() {
+	public String getLibelle() {
 		return libelle;
 	}
 	
-	public void setLibelle(long libelle) {
+	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
 	

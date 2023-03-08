@@ -17,14 +17,13 @@ public class Utilisateur {
 	private int credit;
 	private boolean administrateur;
 	List<ArticleVendu> articleVendu;
-	List<Enchere> enchere;
 	
 	
 	
 	
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur,
-			List<ArticleVendu> articleVendu, List<Enchere> enchere) {
+			List<ArticleVendu> articleVendu) {
 		super();
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
@@ -39,7 +38,6 @@ public class Utilisateur {
 		this.credit = credit;
 		this.administrateur = administrateur;
 		this.articleVendu = articleVendu;
-		this.enchere = enchere;
 	}
 
 
@@ -50,7 +48,7 @@ public class Utilisateur {
 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String rue,
 			String codePostal, String ville, String motDePasse, int credit, boolean administrateur,
-			List<ArticleVendu> articleVendu, List<Enchere> enchere) {
+			List<ArticleVendu> articleVendu) {
 		super();
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
@@ -64,7 +62,6 @@ public class Utilisateur {
 		this.credit = credit;
 		this.administrateur = administrateur;
 		this.articleVendu = articleVendu;
-		this.enchere = enchere;
 	}
 
 
@@ -85,16 +82,6 @@ public class Utilisateur {
 
 	public void setArticleVendu(List<ArticleVendu> articleVendu) {
 		this.articleVendu = articleVendu;
-	}
-
-
-	public List<Enchere> getEnchere() {
-		return enchere;
-	}
-
-
-	public void setEnchere(List<Enchere> enchere) {
-		this.enchere = enchere;
 	}
 
 
@@ -198,23 +185,16 @@ public class Utilisateur {
 		this.noUtilisateur = noUtilisateur;
 	}
 
-	
 
 	@Override
 	public String toString() {
 		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="
 				+ prenom + ", email=" + email + ", telephone=" + telephone + ", rue=" + rue + ", codePostal="
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit
-				+ ", administrateur=" + administrateur + ", articleVendu=" + articleVendu + ", enchere=" + enchere
-				+ ", getCodePostal()=" + getCodePostal() + ", getArticleVendu()=" + getArticleVendu()
-				+ ", getEnchere()=" + getEnchere() + ", getNom()=" + getNom() + ", getPseudo()=" + getPseudo()
-				+ ", getMom()=" + getMom() + ", getPrenom()=" + getPrenom() + ", getEmail()=" + getEmail()
-				+ ", getTelephone()=" + getTelephone() + ", getRue()=" + getRue() + ", codePostal()=" + codePostal()
-				+ ", getVille()=" + getVille() + ", getMotDePasse()=" + getMotDePasse() + ", getCredit()=" + getCredit()
-				+ ", getAdministrateur()=" + getAdministrateur() + ", getNoUtilisateur()=" + getNoUtilisateur()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", administrateur=" + administrateur + ", articleVendu=" + articleVendu + "]";
 	}
+
+	
 
 
 
