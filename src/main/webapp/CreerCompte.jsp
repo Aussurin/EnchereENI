@@ -11,7 +11,7 @@
 	<main>
 		<h1>Mon profile</h1>
 
-		<form method="post"
+		<form method="get"
 			action="/EnchereENI/src/main/java/ihm/CreerCompte.java">
 			<table>
 
