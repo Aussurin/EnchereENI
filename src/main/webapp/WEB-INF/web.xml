@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>EnchereENI</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+<display-name>EnchereENI</display-name>
+<welcome-file-list>
+<welcome-file>PageAccueil.jsp</welcome-file>
+
+</welcome-file-list>
+	
+	
+
+
+	 <!--  <servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>ihm.PageAccueil</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>connection</servlet-name>
+		<servlet-class>ihm.Connexion</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>connection</servlet-name>
+		<url-pattern>/Connexion</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Create</servlet-name>
+		<servlet-class>ihm.CreerCompte</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Create</servlet-name>
+		<url-pattern>/CreerCompte</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Welcome</servlet-name>
+		<servlet-class>ihm.Bienvenue</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Welcome</servlet-name>
+		<url-pattern>/Bienvenue</url-pattern>
+	</servlet-mapping>-->
+	
 </web-app>

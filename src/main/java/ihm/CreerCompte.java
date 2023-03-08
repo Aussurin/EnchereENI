@@ -48,7 +48,7 @@ public class CreerCompte extends HttpServlet {
 		request.setAttribute("CreationReussie", "Creation Reussie");
 		request.getRequestDispatcher("PageAccueil").forward(request, response); //Redirection vers la page d'acceuil si la création du compte est réussie.
 }
->>>>>>> master
+
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
