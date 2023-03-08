@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bll.UtilisateurManager;
 import bo.Utilisateur;
 
 // Servlet implementation class CreerCompte

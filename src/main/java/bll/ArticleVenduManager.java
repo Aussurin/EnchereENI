@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import bo.ArticleVendu;
 import bo.Utilisateur;
 import dal.ArticleVenduDAO;
+import dal.DAOFactory;
 
 public class ArticleVenduManager {
 	
