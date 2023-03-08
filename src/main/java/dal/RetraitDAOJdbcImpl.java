@@ -1,7 +1,5 @@
 package dal;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,36 +15,22 @@ public class RetraitDAOJdbcImpl implements RetraitDAO {
 	
 	@Override
 	public ArrayList<Retrait> selectAll() throws DALException {
-		ArrayList<Retrait>resultat=new ArrayList<Retrait>();
-		try {
-			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_ALL");
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				int id = rs.getInt("no_article");
-				String rue = rs.getString("rue").trim();
-				String codePostal = rs.getString("code_postal").trim();
-				String ville = rs.getString("ville").trim();		
-			}			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();}
-		
-		JdbcTools.closeConnection();return resultat;
-}
+		return null;
+	}
 	
 	@Override
 	public Retrait selectByNo(int id) throws DALException {
-		Retrait resultat=null;
+		Retrait resultat = new Retrait();
 		try {
-			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_BY_NO");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_BY_NO);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				String rue = rs.getString("rue").trim();
-				String codePostal = rs.getString("code_postal").trim();
-				String ville = rs.getString("ville").trim();
+				resultat.setRue(rs.getString("rue").trim());
+				resultat.setCode_postal(rs.getString("code_postal").trim());
+				resultat.setVille(rs.getString("ville").trim());
+				resultat.setNoArticle(id);
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();

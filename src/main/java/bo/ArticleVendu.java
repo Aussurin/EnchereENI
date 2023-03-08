@@ -13,7 +13,7 @@ public class ArticleVendu {
 	private int miseAPrix;
 	private int prixVente;
 	private String etatVente;
-	List<Enchere>enchere;
+	private List<ArticleVendu> enchere;
 	private Utilisateur utilisateur;
 	private Categorie categorie;
 	
@@ -24,7 +24,7 @@ public ArticleVendu() {
 	}
 	
 	public ArticleVendu(int noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, String etatVente, List<Enchere> enchere,
+			Date dateFinEncheres, int miseAPrix, int prixVente, String etatVente, List<ArticleVendu> enchere,
 			Utilisateur utilisateur, Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
@@ -46,11 +46,11 @@ public ArticleVendu() {
 	
 	
 
-	public List<Enchere> getEnchere() {
+	public List<ArticleVendu> getEnchere() {
 		return enchere;
 	}
 
-	public void setEnchere(List<Enchere> enchere) {
+	public void setEnchere(List<ArticleVendu> enchere) {
 		this.enchere = enchere;
 	}
 

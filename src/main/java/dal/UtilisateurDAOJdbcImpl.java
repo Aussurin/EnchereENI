@@ -1,15 +1,10 @@
 package dal;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import bo.Utilisateur;
-
-import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
@@ -23,25 +18,13 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
 	
 	public UtilisateurDAOJdbcImpl() {
-	}
-
+	}	
 	
-	public static void testStaticMethde() {
-		System.out.println("Test Static");
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	@Override
+	@Override	
 	public Utilisateur selectByNo(int id) throws DALException {
 		Utilisateur user = new Utilisateur();
 		try {
-			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_BY_NO");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_BY_NO);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
@@ -61,23 +44,22 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	public Utilisateur selectConnection(String pseudo, String mdp) throws DALException {
 		Utilisateur resultat = null;
 		try {
-			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("CONNECTION");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(CONNECTION);
 			ps.setString(1, pseudo);
 			ps.setString(1, mdp);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				Utilisateur user = new Utilisateur();
-				user.setNoUtilisateur("no_utilisateur");
-				user.setNom(rs.getString("nom").trim());
-				user.setPrenom(rs.getString("prenom").trim());
-				user.setEmail(rs.getString("email").trim());
-				user.setTelephone(rs.getString("telephone").trim());
-				user.setRue(rs.getString("rue").trim());
-				user.setCodePostal(rs.getString("code_postal").trim());
-				user.setVille(rs.getString("ville").trim());
-				user.setCredit(rs.getInt("credit"));
-				user.setAdministrateur(rs.getBoolean("administrateur"));
+				resultat.setNoUtilisateur(rs.getInt("no_utilisateur"));
+				resultat.setNom(rs.getString("nom").trim());
+				resultat.setPrenom(rs.getString("prenom").trim());
+				resultat.setEmail(rs.getString("email").trim());
+				resultat.setTelephone(rs.getString("telephone").trim());
+				resultat.setRue(rs.getString("rue").trim());
+				resultat.setCodePostal(rs.getString("code_postal").trim());
+				resultat.setVille(rs.getString("ville").trim());
+				resultat.setCredit(rs.getInt("credit"));
+				resultat.setAdministrateur(rs.getBoolean("administrateur"));
 			} else {
 				DALException e = new DALException("Pseudo ou mot de passe incorrecte");
 				throw e;
@@ -93,7 +75,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	public ArrayList<Utilisateur> selectAll() throws DALException {
 		ArrayList<Utilisateur> resultat = new ArrayList<Utilisateur>();
 		try {
-			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_ALL");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_ALL);
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -107,6 +89,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				user.setVille(rs.getString("ville").trim());
 				user.setCredit(rs.getInt("credit"));
 				user.setAdministrateur(rs.getBoolean("administrateur"));
+				
+				resultat.add(user);
 			}
 
 		} catch (SQLException e) {
@@ -119,12 +103,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	@Override
 	public void update(Utilisateur user) throws DALException {
 		try {
-			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("MODIFICATION");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(MODIFICATION);
 			ps.setString(1, user.getPseudo());
 			ps.setString(2, user.getNom());
 			ps.setString(3, user.getPrenom());
 			ps.setString(4, user.getEmail());
-			if(!String.isEmpty(user.getTelephone())) {
+			if(!user.getTelephone().isEmpty()) {
 				ps.setString(5, user.getTelephone());
 			}else {
 				ps.setString(5, null);
@@ -144,7 +128,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		
 		return;
 	}
-	
 
 	@Override
 	public void delete(int id) throws DALException {
@@ -159,17 +142,16 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		JdbcTools.closeConnection();
 
 	}
-
 	
 	@Override
 	public Utilisateur insert(Utilisateur user) throws DALException {
 				try {
-			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("ENREGISTREMENT");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(ENREGISTREMENT);
 			ps.setString(1, user.getPseudo());
 			ps.setString(2, user.getNom());
 			ps.setString(3, user.getPrenom());
 			ps.setString(4, user.getEmail());			
-			if(!String.isEmpty(user.getTelephone())) {
+			if(!user.getTelephone().isEmpty()) {
 				ps.setString(5, user.getTelephone());
 			}else {
 				ps.setString(5, null);
@@ -189,5 +171,42 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 		
 		return user;
+	}
+
+	public int selectByPseudo(String pseudo) throws DALException {
+		int resultat = 0;
+		try {
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_BY_PSEUDO);
+			ps.setString(1, pseudo);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				resultat = rs.getInt("no_utilisateur");				
+			} 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		JdbcTools.closeConnection();
+		return resultat;
+	}
+	
+	public int selectByEmail(String email) throws DALException {
+		int resultat = 0;
+		try {
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_BY_PSEUDO);
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				String email2 = rs.getString("email");	
+				if (!email2.isEmpty()) {
+					resultat = 1;
+				}
+			} 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		JdbcTools.closeConnection();
+		return resultat;
 	}
 }

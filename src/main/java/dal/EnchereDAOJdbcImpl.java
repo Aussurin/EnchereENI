@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bo.Enchere;
+import bo.Utilisateur;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO {
 
-	private static final String SELECT_ALL = "SELECT * FROM ENCHERES";
+	private static final String SELECT_BY_UTILISATEUR = "SELECT * FROM ENCHERES WHERE no_utilisateur = ?";
 	private static final String SELECT_BY_NO = "SELECT * FROM ENCHERES WHERE no_enchere=? ";
 
 	@Override
@@ -21,15 +22,16 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	}
 
 	@Override
-	public ArrayList<Enchere> selectByNo(int id) throws DALException {
+	public ArrayList<Enchere> selectByUtilisateur(Utilisateur user) throws DALException {
 		ArrayList<Enchere>resultat=new ArrayList<Enchere>();
 		try {
-			PreparedStatement ps = JdbcTools.getConnection().prepareStatement("SELECT_ALL");
+			PreparedStatement ps = JdbcTools.getConnection().prepareStatement(SELECT_BY_UTILISATEUR);
+			ps.setInt(1, user.getNoUtilisateur());
 			ResultSet rs = ps.executeQuery();
-			
+			Enchere enc = new Enchere();
 			while(rs.next()) {
-				int noEnchere = rs.getInt("no_enchere");
-				Date dateEnchere = rs.getDate("date_enchere");
+				enc = null;
+				enc.setDateEnchere(rs.getDate("date_enchere"));
 				int montantEnchere = rs.getInt("montant_enchere");
 				int noArticle = rs.getInt("no_article");
 				int noUtilisateur = rs.getInt("no_utilisateur");					

@@ -5,16 +5,18 @@ public class Retrait {
 	private String rue;
 	private String code_postal;
 	private String ville;
+	private int noArticle;
 	
 	public Retrait () {
 		
 	}
 	
-	public Retrait(String rue, String code_postal, String ville) {
+	public Retrait(String rue, String code_postal, String ville, int noArticle) {
 		super();
 		this.rue = rue;
 		this.code_postal = code_postal;
 		this.ville = ville;
+		this.noArticle = noArticle;
 	}
 	
 	
@@ -47,6 +49,14 @@ public class Retrait {
 		return "Retrait [rue=" + rue + ", code_postal=" + code_postal + ", ville=" + ville + ", getRue()=" + getRue()
 				+ ", getCode_postal()=" + getCode_postal() + ", getVille()=" + getVille() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
+	public int getNoArticle() {
+		return noArticle;
+	}
+
+	public void setNoArticle(int noArticle) {
+		this.noArticle = noArticle;
 	}
 
 	
