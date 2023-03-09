@@ -19,4 +19,5 @@ public interface ArticleVenduDAO {
 	public ArticleVendu update(ArticleVendu art) throws DALException;
 
 	public void delete(int id) throws DALException;
+	
 }

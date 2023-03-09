@@ -9,18 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/Bienvenue")
-public class Bienvenue extends HttpServlet {
+public class BienvenueCategorie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public Bienvenue() {
-        super();
-        
-    }
-
-	
+   	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String categorie
 	}
 
 	

@@ -116,8 +116,6 @@ public class UtilisateurManager {
 }	
 	
 
-		utilisateurDAO.delete(utilisateurId);	
-}
 	public void delete(int id) throws DALException {
 		utilisateurDAO.delete(id);	
 }

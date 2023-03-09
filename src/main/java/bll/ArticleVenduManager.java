@@ -1,8 +1,8 @@
 package bll;
 
 import bo.ArticleVendu;
-import bo.Utilisateur;
 import dal.ArticleVenduDAO;
+import dal.DAOFactory;
 
 public class ArticleVenduManager {
 	
@@ -52,15 +52,15 @@ public class ArticleVenduManager {
 	}
 	public ArticleVendu recupArticleVendu(int noArt) throws Exception{
 		ArticleVendu art;
-		art = select(noArt);
+		art = articleVenduDAO.selectByNo(noArt);
 		return art;
 	}
 		
-	public ArticleVendu update(ArticleVendu art) throws DALException {	
+	public ArticleVendu update(ArticleVendu art) throws Exception {	
 		articleVenduDAO.update(art);
 		return art;	
 	}
-	public ArticleVendu insert(ArticleVendu art) throws DALException {	
+	public ArticleVendu insert(ArticleVendu art) throws Exception {	
 		articleVenduDAO.enregistrement(art);
 		return art;	
 	}
