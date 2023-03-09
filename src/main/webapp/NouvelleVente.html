@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nouvelle Vente</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+	<main>
+		<h1>Nouvelle vente</h1>
+
+		<form method="get"
+			action="/EnchereENI/src/main/java/ihm/CreerCompte.java">
+			<table>
+
+				<tr>
+					<td><label for="Article">Article</label><input type="text"
+						name="Article" id="Article" placeholder=" " required="required"></td>
+					
+				</tr>
+				<tr>
+					<td><label for="Description">Description</label><input type="text"
+						name="Description" id="Description" placeholder=" " required="required"></td>
+					
+				</tr>
+                <tr>
+                    <td><label for="categorie">Catégories :</label> 
+                    <select name="categorie"id="categorie"></select>
+			
+				        <option value="toutes">Toutes</option>
+				        <option value="informatique">Informatique</option>
+				        <option value="ameublement">Ameublement</option>
+				        <option value="vetement">Vêtement</option>
+				        <option value="sport-loisir">Sport & Loisir</option>
+			        </select></td>
+                </tr>
+			
+				<tr>
+					<td><label for="MiseAPrix">Mise à prix</label><input type="number"
+						name="MiseAPrix" id="MiseAPrix" placeholder=" "
+						required="required"></td>
+					<td><label for="Ville"></label><input type="text" name="Ville"
+						id="Ville" placeholder="Ville" required="required"></td>
+				</tr>
+				<tr>
+					<td><label for="DebutEnchere">Début de l'enchère</label><input type="datetime-local" name="DebutEnchere"
+						id="DebutEnchere" placeholder=" " required="required"></td>
+				</tr>
+                <tr>
+                    <td><label for="FinEnchere">Fin de l'enchère</label><input type="datetime-local" name="FinEnchere"
+						id="FinEnchere" placeholder=" " required="required"></td>
+                </tr>
+				<tr>
+                    <div class="creer">
+					<a href="Bienvenue.html"><td><input type="submit"
+							value="Créer"></td></a>
+                        </div>
+                        <div class="accueil">
+					<td><a href="PageAcceuil.jsp"><button>Annuler</button></a></td>
+                </div>
+				</tr>
+			</table>
+
+            <table>
+                <h4>Retrait</h4>
+
+
+                <tr>
+                    <td><label for="Rue">Rue</label><input type="text"
+                        name="Rue" id="Rue" placeholder=" "
+                        required="required"></td>
+                </tr>
+                <tr>
+                    <td><label for="CodePostale">Code Postale</label><input type="number"
+                        name="CodePostale" id="CodePostale" placeholder=" "
+                        required="required"></td>
+                </tr>
+                <tr>
+                    <td><label for="Ville">Ville</label><input type="text" name="Ville"
+                        id="Ville" placeholder=" " required="required"></td>
+                </tr>
+            
+            
+
+
+            </table>
+
+            <span>
+                <button class="btn" type="submit">Enregistrer</button>
+            </span>
+
+            <span>
+                <button class="btn" type="reset">Annuler</button>
+            </span>
+
+
+		</form>
+	</main>
