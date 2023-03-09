@@ -33,8 +33,8 @@
 	</div>
 
 	<div>
-		<a href="CreerCompte.html" target="_blank"><button>Créer
-				un Compte</button></a>
+		<a href="CreerCompte.html" target="_blank">CrÃ©er
+				un Compte</a>
 	</div>
 
 </body>
