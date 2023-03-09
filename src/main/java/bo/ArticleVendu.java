@@ -14,9 +14,10 @@ public class ArticleVendu {
 	private int miseAPrix;
 	private int prixVente;
 	private String etatVente;
-	List<Enchere>enchere;
+
 	private Utilisateur utilisateur;
 	private Categorie categorie;
+	private int noAcheteur;
 	
 	
 public ArticleVendu() {
@@ -36,24 +37,12 @@ public ArticleVendu() {
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
-		this.enchere = enchere;
 		this.utilisateur = utilisateur;
 		this.categorie = categorie;
 	}
 
 
 
-	
-	
-	
-
-	public List<Enchere> getEnchere() {
-		return enchere;
-	}
-
-	public void setEnchere(List<Enchere> enchere) {
-		this.enchere = enchere;
-	}
 
 	public int getNoArticle() {
 		return noArticle;
@@ -139,14 +128,20 @@ public ArticleVendu() {
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
-				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", enchere=" + enchere
-				+ ", utilisateur=" + utilisateur + ", categorie=" + categorie + ", getEnchere()=" + getEnchere()
-				+ ", getNoArticle()=" + getNoArticle() + ", getNomArticle()=" + getNomArticle() + ", getDescription()="
+				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + "utilisateur=" + utilisateur + ", categorie=" + categorie + "getNoArticle()=" + getNoArticle() + ", getNomArticle()=" + getNomArticle() + ", getDescription()="
 				+ getDescription() + ", getDateDebutEncheres()=" + getDateDebutEncheres() + ", getDateFinEncheres()="
 				+ getDateFinEncheres() + ", getMiseAPrix()=" + getMiseAPrix() + ", getPrixVente()=" + getPrixVente()
 				+ ", getEtatVente()=" + getEtatVente() + ", getUtilisateur()=" + getUtilisateur() + ", getCategorie()="
 				+ getCategorie() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
+	}
+
+	public int getNoAcheteur() {
+		return noAcheteur;
+	}
+
+	public void setNoAcheteur(int noAcheteur) {
+		this.noAcheteur = noAcheteur;
 	}
 	
 	
