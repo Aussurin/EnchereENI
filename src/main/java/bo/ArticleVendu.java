@@ -6,6 +6,7 @@ import java.util.List;
 public class ArticleVendu {
 	
 	private int noArticle;
+	private int noEncherrisseur;
 	private String nomArticle;
 	private String description;
 	private Date dateDebutEncheres;
@@ -13,7 +14,7 @@ public class ArticleVendu {
 	private int miseAPrix;
 	private int prixVente;
 	private String etatVente;
-	private List<ArticleVendu> enchere;
+	List<Enchere>enchere;
 	private Utilisateur utilisateur;
 	private Categorie categorie;
 	
@@ -24,7 +25,7 @@ public ArticleVendu() {
 	}
 	
 	public ArticleVendu(int noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, String etatVente, List<ArticleVendu> enchere,
+			Date dateFinEncheres, int miseAPrix, int prixVente, String etatVente, List<Enchere> enchere,
 			Utilisateur utilisateur, Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
@@ -46,11 +47,11 @@ public ArticleVendu() {
 	
 	
 
-	public List<ArticleVendu> getEnchere() {
+	public List<Enchere> getEnchere() {
 		return enchere;
 	}
 
-	public void setEnchere(List<ArticleVendu> enchere) {
+	public void setEnchere(List<Enchere> enchere) {
 		this.enchere = enchere;
 	}
 
