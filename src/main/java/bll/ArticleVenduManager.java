@@ -56,7 +56,6 @@ public class ArticleVenduManager {
 		return art;
 	}
 		
-
 	public ArticleVendu update(ArticleVendu art) throws DALException {	
 		articleVenduDAO.update(art);
 		return art;	
@@ -66,5 +65,4 @@ public class ArticleVenduManager {
 		return art;	
 	}
 	
-
 }
