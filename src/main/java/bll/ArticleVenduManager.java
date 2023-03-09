@@ -56,7 +56,7 @@ public class ArticleVenduManager {
 		return art;
 	}
 		
-	public ArticleVendu update(ArticleVendu art) throws Exception {	
+
 		articleVenduDAO.update(art);
 		return art;	
 	}
@@ -65,4 +65,5 @@ public class ArticleVenduManager {
 		return art;	
 	}
 	
+
 }
