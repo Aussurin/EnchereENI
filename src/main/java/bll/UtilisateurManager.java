@@ -115,8 +115,7 @@ public class UtilisateurManager {
 		utilisateurDAO.update(utilisateur);
 }	
 	
-	public void delete(String pseudo) throws DALException {
-		int utilisateurId = utilisateurDAO.selectByPseudo(pseudo).getNoUtilisateur();
+
 		utilisateurDAO.delete(utilisateurId);	
 }
 	public void delete(int id) throws DALException {

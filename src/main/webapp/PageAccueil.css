@@ -1,0 +1,71 @@
+*{
+	font-family: 'Open Sans', sans-serif;
+	background-color: azure;
+	padding-top: 0;
+
+
+}
+
+header{
+	background: grey;
+	min-height:5vh;
+	font-size: 27px;
+}
+
+h1{
+	text-align: center;
+	padding: 40px;
+	margin: 40px;
+
+}
+
+.container-fluid{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+
+.insc{
+	float:right;
+}
+
+
+
+span{
+	
+	display: inline-block;
+	background-color: #38c8d8;
+	border-radius: 10px;
+	border: 4px double #cccccc;
+	color: #eeeeee;
+	text-align: center;
+	font-size: 28px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	float: right;
+	width: 270px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 10px;
+	z-index: 5;
+	
+	
+	
+
+	
+}
+
+.filtres {
+	margin: 50px;
+	padding: 10px;
+	
+
+}
+
+.categories{
+	padding-left: 55px;
+	z-index: 0;
+}

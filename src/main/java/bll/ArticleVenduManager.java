@@ -3,8 +3,6 @@ package bll;
 import bo.ArticleVendu;
 import bo.Utilisateur;
 import dal.ArticleVenduDAO;
-import dal.DALException;
-import dal.DAOFactory;
 
 public class ArticleVenduManager {
 	
@@ -58,10 +56,6 @@ public class ArticleVenduManager {
 		return art;
 	}
 		
-	public ArticleVendu select(int noArticle) throws DALException {		
-		ArticleVendu art = articleVenduDAO.selectByNo(noArticle);	
-		return art;
-	}
 	public ArticleVendu update(ArticleVendu art) throws DALException {	
 		articleVenduDAO.update(art);
 		return art;	
@@ -71,15 +65,4 @@ public class ArticleVenduManager {
 		return art;	
 	}
 	
-	public void delete(int noArticle) throws DALException {
-			this.articleVenduDAO.delete(noArticle);
-		}	
-
-	public void encherir(int montant, ArticleVendu art, Utilisateur user) throws DALException {
-		if(montant > art.getPrixVente()) {
-			art.setNoAcheteur(user.getNoUtilisateur());
-			art.setPrixVente(montant);
-			articleVenduDAO.update(art);
-		}
-	}
 }
