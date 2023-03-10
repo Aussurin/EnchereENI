@@ -1,5 +1,7 @@
 package bll;
 
+import java.util.ArrayList;
+
 import bo.ArticleVendu;
 import dal.ArticleVenduDAO;
 import dal.DAOFactory;
@@ -47,7 +49,7 @@ public class ArticleVenduManager {
 		}catch (Exception err){
 			throw err;
 		}
-		update(art);		
+		articleVenduDAO.update(art);		
 		return art;		
 	}
 	public ArticleVendu recupArticleVendu(int noArt) throws Exception{
@@ -55,15 +57,14 @@ public class ArticleVenduManager {
 		art = articleVenduDAO.selectByNo(noArt);
 		return art;
 	}
-		
-
-		articleVenduDAO.update(art);
-		return art;	
-	}
+	
 	public ArticleVendu insert(ArticleVendu art) throws Exception {	
 		articleVenduDAO.enregistrement(art);
 		return art;	
 	}
 	
-
+	public ArrayList<ArticleVendu> recupParCat(int id) throws Exception{
+		return articleVenduDAO.selectByCategorie(id);
+		
+	}
 }
