@@ -19,7 +19,11 @@
 
 	
 	<div class="insc">
+<<<<<<< HEAD
 				<a href="Connexion.html">S'inscrire - Se connecter</a>
+=======
+				<a href="/CreationCompte.java">S'inscrire - Se connecter</a>
+>>>>>>> Samuel
 	</div>
 	
 	<div class="container-fluid">
@@ -56,7 +60,11 @@
 				<option value="informatique">Informatique</option>
 				<option value="ameublement">Ameublement</option>
 				<option value="vetement">Vêtement</option>
+<<<<<<< HEAD
 				<option value="sportloisir">Sport & Loisir</option>
+=======
+				<option value="sport-loisir">Sport & Loisir</option>
+>>>>>>> Samuel
 			</select>
 		</div>
 </div>

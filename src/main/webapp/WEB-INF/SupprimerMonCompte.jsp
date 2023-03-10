@@ -2,12 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>Créer Compte</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="CreerCompte.css">
+<link rel="stylesheet" href="SupprimerMonCompte.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Ultra&display=swap" rel="stylesheet">
@@ -15,7 +14,6 @@
 <body>
 
 	<main>
-
         <header>
             <%@include file="/WEB-INF/EnTete.jsp"%>
         </header>
@@ -35,6 +33,7 @@
                     </div>
 					<td><label for="Nom"></label><input type="text" name="Nom"
 						id="Nom" placeholder="Nom" required="required"></td>
+                    
 				</tr>
 				<tr>
 					<td><label for="Prenom"></label><input type="text"
@@ -63,13 +62,12 @@
 						placeholder="Confirmez le mot de passe" required="required"></td>
 				</tr>
 				<tr>
-
                     <div class="button">
 					<a href="Bienvenue.html"><td><input type="submit"
 							value="Créer"></td></a>
                         </div>
                         <div class="button">
-					<a href="PageAcceuil.jsp"><td><input type="reset" value="Annuler"></td></a>
+					<a href="supprimerCompte.java"><td><input type="delete" value="Supprimer mon compte"></td></a>
                 </div>
 				</tr>
             </div>
@@ -81,4 +79,4 @@
 
 
 	<div class="container"></div>
-
+	

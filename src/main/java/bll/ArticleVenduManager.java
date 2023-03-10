@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import bo.ArticleVendu;
 import dal.ArticleVenduDAO;
+import dal.DALException;
 import dal.DAOFactory;
+
 
 public class ArticleVenduManager {
 	
@@ -57,14 +59,21 @@ public class ArticleVenduManager {
 		art = articleVenduDAO.selectByNo(noArt);
 		return art;
 	}
-	
-	public ArticleVendu insert(ArticleVendu art) throws Exception {	
+
+	public ArticleVendu update(ArticleVendu art) throws DALException {	
+		articleVenduDAO.update(art);
+		return art;	
+	}
+	public ArticleVendu insert(ArticleVendu art) throws DALException {	
+
 		articleVenduDAO.enregistrement(art);
 		return art;	
 	}
 	
+
 	public ArrayList<ArticleVendu> recupParCat(int id) throws Exception{
 		return articleVenduDAO.selectByCategorie(id);
-		
+	
 	}
+
 }
