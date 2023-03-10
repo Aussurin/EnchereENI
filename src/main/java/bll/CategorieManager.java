@@ -10,9 +10,10 @@ import dal.DAOFactory;
 public class CategorieManager {
 	private CategorieDAO categorieDAO;
 
-	public CategorieManager(CategorieDAO categorieDAO) {
+	public CategorieManager() {
 		categorieDAO = DAOFactory.getCategorieDAO();
 	}
+
 
 	public void addCategorie(String libelle) throws Exception {
 		BLLException err = new BLLException();
@@ -52,5 +53,10 @@ public class CategorieManager {
 
 	public List<Categorie> getAllCategories() throws DALException {
 		return categorieDAO.selectAll();
+	}
+	public int selectId(String cat) throws Exception{
+		return categorieDAO.selectByLibelle(cat).getNoCategorie();
+		
+		
 	}
 }

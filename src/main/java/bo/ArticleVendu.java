@@ -1,12 +1,10 @@
 package bo;
 
 import java.util.Date;
-import java.util.List;
 
 public class ArticleVendu {
 	
 	private int noArticle;
-	private int noEncherrisseur;
 	private String nomArticle;
 	private String description;
 	private Date dateDebutEncheres;
@@ -26,8 +24,7 @@ public ArticleVendu() {
 	}
 	
 	public ArticleVendu(int noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, String etatVente, List<Enchere> enchere,
-			Utilisateur utilisateur, Categorie categorie) {
+			Date dateFinEncheres, int miseAPrix, int prixVente, String etatVente,Utilisateur utilisateur, Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
