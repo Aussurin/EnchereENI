@@ -19,7 +19,7 @@
 
 	
 	<div class="insc">
-				<a href="Connexion.html">S'inscrire - Se connecter</a>
+				<a href="/CreationCompte.java">S'inscrire - Se connecter</a>
 	</div>
 	
 	<div class="container-fluid">

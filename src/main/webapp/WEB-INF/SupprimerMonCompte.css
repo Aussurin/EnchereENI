@@ -1,0 +1,78 @@
+.box {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #ccc;
+	border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+	margin-top: 100px;
+    opacity: 5;
+	
+  }
+
+table{
+    border-collapse: separate;
+    border-spacing: 20px;
+
+}
+
+h1{
+	font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+	
+
+}
+
+
+
+body {
+	color: black;
+	background-color: azure;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100px;
+	margin-top: 60px;
+	background-image: url('encheres-marteau.jpeg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100%;
+	padding: 100px;
+
+  	
+  }
+
+  input[type="submit"] {
+	background-color: #deba66;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 80px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	
+  }
+  
+  input[type="submit"]:hover {
+	background-color: #deba66;
+  }
+  input[type="delete"] {
+	background-color: #e3ce9d;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 73px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	
+
+  }
+  
+  input[type="delete"]:hover {
+	background-color: #e3ce9d;
+  }
