@@ -16,17 +16,26 @@
 <body>
 
 	<main>
-		<h1>Mon profile</h1>
-
+        <header>
+            <%@include file="/WEB-INF/EnTete.jsp"%>
+        </header>
+        
+		<div class="box">
+			<div class="container-fluid">
+				<h1>Mon profile</h1>
+			</div>
 		<form method="get"
 			action="/EnchereENI/src/main/java/ihm/CreerCompte.java">
 			<table>
-
+                
 				<tr>
+                    <div class="table">
 					<td><label for="Pseudo"></label><input type="text"
 						name="Pseudo" id="Pseudo" placeholder="Pseudo" required="required"></td>
+                    </div>
 					<td><label for="Nom"></label><input type="text" name="Nom"
 						id="Nom" placeholder="Nom" required="required"></td>
+                    
 				</tr>
 				<tr>
 					<td><label for="Prenom"></label><input type="text"
@@ -55,15 +64,23 @@
 						placeholder="Confirmez le mot de passe" required="required"></td>
 				</tr>
 				<tr>
-                    <div class="creer">
+                    <div class="button">
 					<a href="Bienvenue.html"><td><input type="submit"
 							value="Créer"></td></a>
                         </div>
-                        <div class="accueil">
-					<td><a href="PageAcceuil.jsp">Annuler</a></td>
+                        <div class="button">
+					<a href="PageAcceuil.jsp"><td><input type="reset" value="Annuler"></td></a>
                 </div>
 				</tr>
+            </div>
 			</table>
 		</form>
+	</div>
+	
 	</main>
+
+
 	<div class="container"></div>
+	</body>
+
+</html>

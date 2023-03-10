@@ -1,0 +1,100 @@
+.box {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #ccc;
+	border-radius: 10px;
+    padding: 70px;
+    margin: 20px;
+	margin-top: 70px;
+    opacity: 5;
+	
+  }
+
+  .form-text{
+
+padding: 10px;
+  }
+
+
+
+
+
+body{
+	color: black;
+	display: flex;
+    background-color: azure;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100px;
+	margin-top: 60px;
+	background-image: url('encheres-marteau.jpeg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100%;
+	padding: 100px;
+}
+
+  input[type="submit"] {
+	background-color: #deba66;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 30px;
+    margin-top: 30px;;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	
+  }
+  
+  input[type="submit"]:hover {
+	background-color: #deba66;
+  }
+
+  input[type="reset"] {
+	background-color: #deba66;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 30px 100px;
+    margin-top: 50px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	
+  }
+  
+  input[type="reset"]:hover {
+	background-color: #deba66;
+  }
+
+  
+ 
+.checkbox{
+    float: right;
+	padding-top: 28px;
+	
+}
+
+input[type="text"]{
+    float:right
+    
+}
+
+input[type="password"]{
+    float:right
+    
+}
+
+input[type="password"]{
+    background-color: transparent;
+}
+
+input[type="text"]{
+    background-color: transparent;
+}
+
+.container {
+	display: flex;
+}

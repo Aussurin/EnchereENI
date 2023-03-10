@@ -6,28 +6,34 @@
 	<head>
 	<meta charset="UTF-8">
 	
-	<title>Title of the document</title>
+	<title>Bienvenue</title>
 	</head>
 	
 	<body>
-		<h1>Listes des encheres</h1>
+
+		<header>
+			<a href="Enchères.html" type="link">Enchères</a>
+			<a href="VendreUnArticle.html" type="link">Vendre un article</a>
+			<a href="MonProfil.html" type="link">Mon profil</a>
+			<a href=".html" type="link">Déconnexion</a>
+		</header>
 	
-		<div>
-			<label for="filtres">Filtres :</label> <input type="search"
-				id="site-search" name="filtres">
-			<button>Rechercher</button>
-		</div>
+		<%@include file="/WEB-INF/EnTete.jsp"%>
 	
-		<div>
-			<span> <a href="Enchères.html">Enchères</a>
-			</span> <span> <a href="VendreUnArticle.html">Vendre un article</a>
-			</span> <span> <a href="MonProfil.html">Mon profil</a>
-			</span> <span> <a href=".html">Déconnexion</a>
-			</span>
-		</div>
 	
+			<div class="container-fluid">
+				<h1>Listes des enchères</h1>
+			</div>
+	
+	
+	
+	<form>
+		<div >
+				<label for="filtres">Filtres :</label> </br><input type="search"
+					id="site-search" placeholder="Le nom de l'article contient" name="filtres">
+			</div>
 		<div>
-			<label for="categorie">Catégories :</label> <select name="categorie"
+			<label for="categorie">Catégories :</label> <select type="categorie"
 				id="categorie">
 				<option value="">Toutes</option>
 				<option value="informatique">Informatique</option>
@@ -36,6 +42,45 @@
 				<option value="sport-loisir">Sport & Loisir</option>
 			</select>
 		</div>
+	
+		<button class="btn" type="submit">Rechercher</button>
+	</form>
+	
+	
+	
+	<div class="checkbox">
+	<form class="container">
+		
+		<div class="left-div">
+	<input type="radio" id="achat" name="achat">
+	<label for="achat">Achats:</label></br>
+	
+	<input type="checkbox" id="achat2" name="achat2">
+	<label for="achat2">mes enchères ouvertes</label></br>
+	
+	<input type="checkbox" id="achat2" name="achat2">
+	<label for="achat2">mes enchères</label></br>
+	
+	<input type="checkbox" id="achat3" name="achat3">
+	<label for="achat3">mes enchères remportées</label></br>
+		</div>
+	
+		<div class="right-div">
+	
+	<input type="radio" id="achat" name="achat">
+	<label for="achat">Mes ventes</label></br>
+	
+	<input type="checkbox" id="achat2" name="achat2">
+	<label for="achat2">mes ventes en cours</label></br>
+	
+	<input type="checkbox" id="achat2" name="achat2">
+	<label for="achat2">ventes non débutées</label></br>
+	
+	<input type="checkbox" id="achat3" name="achat3">
+	<label for="achat3">ventes terminées</label></br>
+		</div>
+	</div>
+	</form>
 	</body>
 	
 	</html>
